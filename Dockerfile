@@ -75,6 +75,6 @@ ENTRYPOINT ["/widget"]
 # ...
 FROM local-runtime-base AS goreleaser-local-runtime
 COPY assets ./assets
-COPY lastfm-now-playing ./widget
+COPY linux/amd64/lastfm-now-playing ./widget
 ENV CHROMIUM_BROWSER_BINARY_PATH=/usr/bin/chromium
 ENTRYPOINT ["/widget"]
