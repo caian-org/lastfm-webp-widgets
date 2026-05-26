@@ -6,10 +6,10 @@ import (
 	"os"
 
 	// internal
-	. "github.com/upsetbit/lastfm-webp-widgets/internal/logger"
-	"github.com/upsetbit/lastfm-webp-widgets/internal/util"
+	. "github.com/caian-org/lastfm-webp-widgets/internal/logger"
+	"github.com/caian-org/lastfm-webp-widgets/internal/util"
 
-	L "github.com/upsetbit/lastfm-webp-widgets/pkg/client/lastfm"
+	L "github.com/caian-org/lastfm-webp-widgets/pkg/client/lastfm"
 )
 
 const (

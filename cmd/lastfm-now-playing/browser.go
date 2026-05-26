@@ -7,8 +7,8 @@ import (
 	"time"
 
 	// internal
-	. "github.com/upsetbit/lastfm-webp-widgets/internal/logger"
-	B "github.com/upsetbit/lastfm-webp-widgets/internal/widget_browser"
+	. "github.com/caian-org/lastfm-webp-widgets/internal/logger"
+	B "github.com/caian-org/lastfm-webp-widgets/internal/widget_browser"
 )
 
 var browser *B.Browser

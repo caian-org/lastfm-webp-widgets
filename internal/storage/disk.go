@@ -8,7 +8,7 @@ import (
 	"os"
 
 	// internal
-	. "github.com/upsetbit/lastfm-webp-widgets/internal/logger"
+	. "github.com/caian-org/lastfm-webp-widgets/internal/logger"
 )
 
 func storageInit() {}

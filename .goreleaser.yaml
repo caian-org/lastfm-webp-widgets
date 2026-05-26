@@ -1,0 +1,55 @@
+version: 2
+
+builds:
+  - id: lastfm-now-playing
+    main: ./cmd/lastfm-now-playing
+    binary: lastfm-now-playing
+    env:
+      - CGO_ENABLED=1
+      - CC=musl-gcc
+    tags:
+      - exec_local
+      - save_s3
+    goos:
+      - linux
+    goarch:
+      - amd64
+    ldflags:
+      - -s -w -linkmode=external -extldflags=-static
+
+archives:
+  - ids:
+      - lastfm-now-playing
+    formats:
+      - tar.gz
+    name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+dockers_v2:
+  - id: lastfm-widget-now-playing
+    ids:
+      - lastfm-now-playing
+    dockerfile: Dockerfile
+    images:
+      - ghcr.io/caian-org/lastfm-widget-now-playing
+    tags:
+      - "{{ .Tag }}"
+      - latest
+    platforms:
+      - linux/amd64
+    extra_files:
+      - assets
+    flags:
+      - --target=goreleaser-local-runtime
+    labels:
+      org.opencontainers.image.title: lastfm-widget-now-playing
+      org.opencontainers.image.description: Last.fm now playing WebP widget
+      org.opencontainers.image.source: https://github.com/caian-org/lastfm-webp-widgets
+      org.opencontainers.image.revision: "{{ .FullCommit }}"
+      org.opencontainers.image.version: "{{ .Version }}"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"

@@ -8,11 +8,11 @@ import (
 	"strconv"
 
 	// internal
-	. "github.com/upsetbit/lastfm-webp-widgets/internal/logger"
+	. "github.com/caian-org/lastfm-webp-widgets/internal/logger"
 
-	"github.com/upsetbit/lastfm-webp-widgets/internal/lastfm"
-	"github.com/upsetbit/lastfm-webp-widgets/internal/storage"
-	"github.com/upsetbit/lastfm-webp-widgets/internal/util"
+	"github.com/caian-org/lastfm-webp-widgets/internal/lastfm"
+	"github.com/caian-org/lastfm-webp-widgets/internal/storage"
+	"github.com/caian-org/lastfm-webp-widgets/internal/util"
 )
 
 func doRoutine() {

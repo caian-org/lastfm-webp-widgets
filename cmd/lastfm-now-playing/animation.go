@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 
 	// internal
-	. "github.com/upsetbit/lastfm-webp-widgets/internal/logger"
+	. "github.com/caian-org/lastfm-webp-widgets/internal/logger"
 
-	"github.com/upsetbit/lastfm-webp-widgets/internal/storage"
-	"github.com/upsetbit/lastfm-webp-widgets/internal/util"
-	"github.com/upsetbit/lastfm-webp-widgets/pkg/webpanimation"
+	"github.com/caian-org/lastfm-webp-widgets/internal/storage"
+	"github.com/caian-org/lastfm-webp-widgets/internal/util"
+	"github.com/caian-org/lastfm-webp-widgets/pkg/webpanimation"
 )
 
 const (

@@ -1,11 +1,15 @@
+ARG GO_VERSION=1.26.2
+ARG ALPINE_VERSION=3.22.1
+
+
 # ...
-FROM golang:1.22.3-bullseye AS base
+FROM golang:${GO_VERSION}-bookworm AS base
 ENV GOCACHE=/root/.cache/go-build
 WORKDIR /widget
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        "musl-dev=1.2.2-1" \
-        "musl-tools=1.2.2-1" \
+        "musl-dev=1.2.3-1" \
+        "musl-tools=1.2.3-1" \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -53,7 +57,7 @@ COPY --from=build /widget/widget ./widget
 
 
 # ...
-FROM alpine:3.20.0 AS local-runtime-base
+FROM alpine:${ALPINE_VERSION} AS local-runtime-base
 WORKDIR /
 RUN apk update \
     && apk add --no-cache chromium \
@@ -64,5 +68,13 @@ RUN apk update \
 FROM local-runtime-base AS local-runtime
 COPY assets ./assets
 COPY --from=build /widget/widget ./widget
+ENV CHROMIUM_BROWSER_BINARY_PATH=/usr/bin/chromium
+ENTRYPOINT ["/widget"]
+
+
+# ...
+FROM local-runtime-base AS goreleaser-local-runtime
+COPY assets ./assets
+COPY lastfm-now-playing ./widget
 ENV CHROMIUM_BROWSER_BINARY_PATH=/usr/bin/chromium
 ENTRYPOINT ["/widget"]

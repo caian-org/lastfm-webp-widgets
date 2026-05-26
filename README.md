@@ -1,5 +1,7 @@
 # Last.fm WebP Widgets
 
+<https://github.com/caian-org/lastfm-webp-widgets>
+
 ## Now Playing
 
 <picture>
@@ -18,7 +20,7 @@ docker run \
     -e AWS_ACCESS_KEY_ID='access-key-to-upload-to-the-bucket' \
     -e AWS_SECRET_ACCESS_KEY='secret-key-to-upload-to-the-bucket' \
     -e AWS_REGION='us-east-1' \
-    caian/lastfm-widget-now-playing
+    ghcr.io/caian-org/lastfm-widget-now-playing:latest
 ```
 
 ### Build from source and run
@@ -34,4 +36,20 @@ cd cmd/lastfm-now-playing \
     && go build -tags exec_local,save_s3 -o ../../bin/lastfm-now-playing \
     && cd ../.. \
     && ./bin/lastfm-now-playing
+```
+
+### Release
+
+Push a `v*` tag to create a GitHub Release and publish the Docker image to GitHub Container Registry:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+Release images are published as:
+
+```text
+ghcr.io/caian-org/lastfm-widget-now-playing:<tag>
+ghcr.io/caian-org/lastfm-widget-now-playing:latest
 ```

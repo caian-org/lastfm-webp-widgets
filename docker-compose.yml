@@ -1,11 +1,14 @@
 services:
   lambda:
     container_name: lastfm-now-playing
-    image: lastfm-now-playing
+    image: ghcr.io/caian-org/lastfm-widget-now-playing:local
     build:
       context: .
       dockerfile: Dockerfile
       target: local-runtime
+      args:
+        GO_VERSION: 1.26.2
+        ALPINE_VERSION: 3.22.1
     platform: linux/amd64
     env_file:
       - ./.env

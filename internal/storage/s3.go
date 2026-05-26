@@ -18,7 +18,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 
 	// internal
-	. "github.com/upsetbit/lastfm-webp-widgets/internal/logger"
+	. "github.com/caian-org/lastfm-webp-widgets/internal/logger"
 )
 
 const (
