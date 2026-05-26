@@ -25,7 +25,7 @@ var (
 
 func takeScreenshot(framedir string, counter int, tm string, frames *map[string][]string) {
 	ffp := filepath.Join(framedir, fmt.Sprintf("%d-%s.png", counter, tm))
-	browser.TakeScreenshot(ffp)
+	_ = browser.TakeScreenshot(ffp)
 
 	(*frames)[tm] = append((*frames)[tm], ffp)
 	Log.Info("took screenshot", "type", "scroll", "mode", tm, "path", ffp)

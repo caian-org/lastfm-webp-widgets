@@ -1,51 +1,76 @@
+version: "2"
 run:
-  timeout: 5m
   build-tags:
     - exec_local
     - save_s3
-
 linters:
-  disable-all: true
+  default: none
   enable:
     - errcheck
     - govet
     - ineffassign
-    - staticcheck
-    - unused
     - misspell
     - revive
-    - gofmt
-    - goimports
-
-linters-settings:
-  revive:
+    - staticcheck
+    - unused
+  settings:
+    revive:
+      rules:
+        - name: unused-parameter
+          disabled: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
     rules:
-      - name: unused-parameter
-        disabled: true
-
+      - linters:
+          - errcheck
+          - revive
+        path: _test\.go
+      - linters:
+          - errcheck
+          - govet
+          - misspell
+          - revive
+          - staticcheck
+          - unused
+        path: pkg/log15-2.16.0/
+      - linters:
+          - errcheck
+          - govet
+          - misspell
+          - revive
+          - staticcheck
+          - unused
+        path: pkg/webpanimation/
+      # dot imports of `internal/logger` are an intentional style in this codebase
+      - linters:
+          - staticcheck
+        text: "ST1001"
+      # aws-sdk-go v1 is still in use; v2 migration is tracked separately
+      - linters:
+          - staticcheck
+        text: "SA1019"
+        path: internal/storage/
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
 issues:
-  exclude-rules:
-    - path: _test\.go
-      linters:
-        - errcheck
-        - revive
-    - path: pkg/log15-2.16.0/
-      linters:
-        - errcheck
-        - revive
-        - staticcheck
-        - unused
-        - misspell
-        - gofmt
-        - goimports
-    - path: pkg/webpanimation/
-      linters:
-        - errcheck
-        - revive
-        - staticcheck
-        - unused
-        - misspell
-        - gofmt
-        - goimports
   max-issues-per-linter: 0
   max-same-issues: 0
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+      - pkg/log15-2.16.0/
+      - pkg/webpanimation/

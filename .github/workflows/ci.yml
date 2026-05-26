@@ -54,7 +54,6 @@ jobs:
           cache: true
 
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v6
+        uses: golangci/golangci-lint-action@v9
         with:
           version: latest
-          args: --build-tags=exec_local,save_s3 --timeout=5m
