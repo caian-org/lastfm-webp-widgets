@@ -1,0 +1,4 @@
+interface:
+  display_name: "Last.fm Widget WebP CGO"
+  short_description: "CGO/libwebp and static release guidance"
+  default_prompt: "Use $lastfm-widget-webp-cgo when changing WebP encoding, pkg/webpanimation, cgo flags, Docker builds, or GoReleaser releases."

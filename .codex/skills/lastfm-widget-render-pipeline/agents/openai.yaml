@@ -1,0 +1,4 @@
+interface:
+  display_name: "Last.fm Widget Render Pipeline"
+  short_description: "Rendering and frame-capture workflow"
+  default_prompt: "Use $lastfm-widget-render-pipeline when changing Last.fm data injection, widget assets, screenshot capture, themes, or WebP outputs."

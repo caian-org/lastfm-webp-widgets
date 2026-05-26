@@ -1,0 +1,4 @@
+interface:
+  display_name: "Last.fm Widget Dev Workflow"
+  short_description: "Local development workflow for lastfm-webp-widgets"
+  default_prompt: "Use $lastfm-widget-dev-workflow to set up, run, test, or validate lastfm-webp-widgets changes."
