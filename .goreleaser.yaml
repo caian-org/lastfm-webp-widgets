@@ -1,5 +1,9 @@
 version: 2
 
+before:
+  hooks:
+    - go mod tidy
+
 builds:
   - id: lastfm-now-playing
     main: ./cmd/lastfm-now-playing
@@ -23,6 +27,9 @@ archives:
     formats:
       - tar.gz
     name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+      - LICENSE*
 
 dockers_v2:
   - id: lastfm-widget-now-playing
@@ -47,9 +54,27 @@ dockers_v2:
       org.opencontainers.image.revision: "{{ .FullCommit }}"
       org.opencontainers.image.version: "{{ .Version }}"
 
+checksum:
+  name_template: checksums.txt
+  algorithm: sha256
+
 changelog:
   sort: asc
+  use: github
   filters:
     exclude:
       - "^docs:"
       - "^test:"
+      - "^chore:"
+      - "^ci:"
+      - Merge pull request
+      - Merge branch
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: Bug Fixes
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: Others
+      order: 999
