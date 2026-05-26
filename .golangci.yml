@@ -1,0 +1,51 @@
+run:
+  timeout: 5m
+  build-tags:
+    - exec_local
+    - save_s3
+
+linters:
+  disable-all: true
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - misspell
+    - revive
+    - gofmt
+    - goimports
+
+linters-settings:
+  revive:
+    rules:
+      - name: unused-parameter
+        disabled: true
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - revive
+    - path: pkg/log15-2.16.0/
+      linters:
+        - errcheck
+        - revive
+        - staticcheck
+        - unused
+        - misspell
+        - gofmt
+        - goimports
+    - path: pkg/webpanimation/
+      linters:
+        - errcheck
+        - revive
+        - staticcheck
+        - unused
+        - misspell
+        - gofmt
+        - goimports
+  max-issues-per-linter: 0
+  max-same-issues: 0
