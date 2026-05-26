@@ -33,3 +33,28 @@ build-all:
 run target:
     @just build {{ target }}
     @./bin/{{ target }}
+
+# run go test with required build tags
+test:
+    @go test -tags exec_local,save_s3 ./...
+
+# run the test suite with the race detector
+test-race:
+    @go test -tags exec_local,save_s3 -race ./...
+
+# coverage profile + per-function totals
+cover:
+    @go test -tags exec_local,save_s3 -coverprofile=coverage.out ./...
+    @go tool cover -func=coverage.out | tail -20
+
+# go vet (CI also runs golangci-lint)
+lint:
+    @go vet -tags exec_local,save_s3 ./...
+
+# go mod tidy
+tidy:
+    @go mod tidy
+
+# remove build outputs
+clean:
+    @rm -rf bin coverage.out
