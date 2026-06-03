@@ -9,7 +9,7 @@ require (
 	github.com/go-stack/stack v1.8.1
 	github.com/inconshreveable/log15 v2.16.0+incompatible
 	github.com/joho/godotenv v1.5.1
-	github.com/mattn/go-colorable v0.1.14
+	github.com/mattn/go-colorable v0.1.15
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/sys v0.45.0
 	golang.org/x/term v0.43.0
