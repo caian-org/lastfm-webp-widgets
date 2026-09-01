@@ -3,7 +3,7 @@ module github.com/caian-org/lastfm-webp-widgets
 go 1.26.2
 
 require (
-	github.com/aws/aws-lambda-go v1.54.0
+	github.com/aws/aws-lambda-go v1.55.0
 	github.com/aws/aws-sdk-go v1.55.8
 	github.com/go-rod/rod v0.116.2
 	github.com/go-stack/stack v1.8.1
